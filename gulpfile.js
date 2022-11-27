@@ -252,7 +252,8 @@ var startServer = function (done) {
 	// Initialize BrowserSync
 	browserSync.init({
 		server: {
-			baseDir: paths.reload
+			baseDir: paths.reload,
+			port: process.env.PORT || 3000, // localhost:3000
 		}
 	});
 
@@ -288,9 +289,15 @@ exports.default = series(
 		lintScripts,
 		buildStyles,
 		buildSVGs,
-		copyFiles
+		copyFiles,
+		startServer
 	)
 );
+
+exports.serveprod = series(
+    exports.default,
+    startServer
+)
 
 // Watch and reload
 // gulp watch
