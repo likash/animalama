@@ -90,6 +90,8 @@ var svgmin = require('gulp-svgmin');
 // BrowserSync
 var browserSync = require('browser-sync');
 
+var gulp = require('gulp'),
+  connect = require('gulp-connect');
 
 /**
  * Gulp Tasks
@@ -275,6 +277,15 @@ var watchSource = function (done) {
 	done();
 };
 
+var serveprod = function(done) {
+    connect.server({
+        root: paths.reload,
+        port: process.env.PORT || 5000, // localhost:5000
+        livereload: false
+    });
+    done();
+};
+
 
 /**
  * Export Tasks
@@ -289,14 +300,13 @@ exports.default = series(
 		lintScripts,
 		buildStyles,
 		buildSVGs,
-		copyFiles,
-		startServer
+		copyFiles
 	)
 );
 
 exports.serveprod = series(
     exports.default,
-    startServer
+    serveprod
 )
 
 // Watch and reload
