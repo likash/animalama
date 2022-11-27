@@ -10,6 +10,10 @@
 		"name": "YOUR NAME",
 		"url": "http://link-to-your-website.com"
 	},
+	"scripts": {
+		"start": "gulp",
+		"poststart": "npm prune --production"
+	},
 	"license": "MIT",
 	"repository": {
 		"type": "git",
