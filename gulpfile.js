@@ -281,6 +281,7 @@ var serveprod = function(done) {
     connect.server({
         root: paths.reload,
         port: process.env.PORT || 5000, // localhost:5000
+        host : '0.0.0.0',
         livereload: false
     });
     done();
