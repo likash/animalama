@@ -288,7 +288,8 @@ exports.default = series(
 		lintScripts,
 		buildStyles,
 		buildSVGs,
-		copyFiles
+		copyFiles,
+		startServer
 	)
 );
 
